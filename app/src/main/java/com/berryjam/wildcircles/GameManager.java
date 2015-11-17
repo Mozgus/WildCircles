@@ -7,14 +7,21 @@ public class GameManager {
 
     private Paint paint;
     private MainCircle mainCircle;
+    private CanvasView canvasView;
+    public static int width;
+    public static int height;
 
-    public GameManager() {
+
+    public GameManager(CanvasView canvasView, int w, int h) {
+        this.canvasView = canvasView;
+        width = w;
+        height = h;
         initPaint();
         initMainCircle();
     }
 
     public void initMainCircle() {
-        mainCircle = new MainCircle(200,500);
+        mainCircle = new MainCircle(width / 2, height / 2);
     }
 
     public void initPaint() {
@@ -35,6 +42,5 @@ public class GameManager {
     public MainCircle getMainCircle() {
         return mainCircle;
     }
-
 
 }
