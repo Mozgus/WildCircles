@@ -2,21 +2,32 @@ package com.berryjam.wildcircles;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 
-public class CanvasView extends View {
-    public static int width;
-    public static int height;
-    GameManager gm;
+public class CanvasView extends View implements ICanvasView{
+    private static int width;
+    private static int height;
+    private GameManager gm;
+    private Paint paint;
+    private Canvas canvas;
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initDisplayMetrics(context);
+        initPaint();
         gm = new GameManager(this, width, height);
+    }
+
+    public void initPaint() {
+        paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.FILL);
+
     }
 
     private void initDisplayMetrics(Context context) {
@@ -33,6 +44,12 @@ public class CanvasView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        gm.onDraw(canvas);
+        this.canvas=canvas;
+        gm.onDraw();
+    }
+
+    @Override
+    public void drawCircle(MainCircle circle) {
+        canvas.drawCircle(circle.getX(), circle.getY(), circle.getRadius(), paint);
     }
 }
