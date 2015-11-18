@@ -1,8 +1,5 @@
 package com.berryjam.wildcircles;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-
 public class GameManager {
 
     private MainCircle mainCircle;
@@ -18,6 +15,14 @@ public class GameManager {
         initMainCircle();
     }
 
+    public static int getWidth() {
+        return width;
+    }
+
+    public static int getHeight() {
+        return height;
+    }
+
     public void initMainCircle() {
         mainCircle = new MainCircle(width / 2, height / 2);
     }
@@ -26,4 +31,7 @@ public class GameManager {
         canvasView.drawCircle(mainCircle);
     }
 
+    public void onTouchEvent(int x, int y) {
+        mainCircle.moveMainCircleWhenTouchAt(x, y);
+    }
 }
