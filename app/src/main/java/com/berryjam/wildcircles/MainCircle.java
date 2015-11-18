@@ -2,7 +2,7 @@ package com.berryjam.wildcircles;
 
 import android.graphics.Color;
 
-public class MainCircle extends SimpleCircle{
+public class MainCircle extends SimpleCircle {
 
     public static final int INIT_RADIUS = 50;
     public static final int MAIN_SPEED = 30;
