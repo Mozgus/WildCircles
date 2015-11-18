@@ -50,7 +50,7 @@ public class CanvasView extends View implements ICanvasView {
     }
 
     @Override
-    public void drawCircle(MainCircle circle) {
+    public void drawCircle(SimpleCircle circle) {
         canvas.drawCircle(circle.getX(), circle.getY(), circle.getRadius(), paint);
     }
 
@@ -59,7 +59,7 @@ public class CanvasView extends View implements ICanvasView {
         int x = (int) event.getX();
         int y = (int) event.getY();
         if (event.getAction() == MotionEvent.ACTION_MOVE) {
-            gm.onTouchEvent(x,y);
+            gm.onTouchEvent(x, y);
         }
         invalidate();
         return true;
