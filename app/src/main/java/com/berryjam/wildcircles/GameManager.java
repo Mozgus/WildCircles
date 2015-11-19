@@ -60,5 +60,12 @@ public class GameManager {
 
     public void onTouchEvent(int x, int y) {
         mainCircle.moveMainCircleWhenTouchAt(x, y);
+        moveCircles();
+    }
+
+    private void moveCircles() {
+        for (EnemyCircle circle : circles) {
+            circle.moveOneStep();
+        }
     }
 }
