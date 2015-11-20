@@ -54,7 +54,7 @@ public class CanvasView extends View implements ICanvasView {
     @Override
     public void drawCircle(SimpleCircle circle) {
         paint.setColor(circle.getColor());
-        canvas.drawCircle(circle.getX(), circle.getY(), circle.getRadius(), paint);
+        canvas.drawCircle(circle.getX(), circle.getY(), recalculateRadius(circle.getRadius()), paint);
     }
 
     @Override
@@ -81,5 +81,10 @@ public class CanvasView extends View implements ICanvasView {
         }
         invalidate();
         return true;
+    }
+
+    public static int recalculateRadius(int radius) {
+        return radius * 768 / width;
+//        return radius * 768 / (width < height ? width : height);
     }
 }
