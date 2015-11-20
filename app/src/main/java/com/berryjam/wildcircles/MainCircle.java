@@ -23,4 +23,9 @@ public class MainCircle extends SimpleCircle {
     public void initRadius() {
         radius = INIT_RADIUS;
     }
+
+    public void growSquare(SimpleCircle circle) {
+        radius = (int) Math.sqrt(Math.pow(radius, 2) + Math.pow(circle.radius, 2));
+    }
+
 }
