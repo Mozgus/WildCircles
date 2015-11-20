@@ -74,17 +74,13 @@ public class GameManager {
                     calculateAndSetCirclesColor();
                     break;
                 } else {
-                    gameOver();
+                    gameOver(false); // "You LOSE"
                     return;
                 }
             }
         }
-        if (-1 != circleForDelete) {
-            circles.remove(circleForDelete);
-        }
-        if (circles.isEmpty()) {
-            gameOver();
-        }
+        if (-1 != circleForDelete) circles.remove(circleForDelete);
+        if (circles.isEmpty()) gameOver(true); // "You WIN!!!"
     }
 
     private void moveCircles() {
@@ -93,7 +89,12 @@ public class GameManager {
         }
     }
 
-    private void gameOver() {
+    private void gameOver(boolean result) {
+        if (result)
+            canvasView.showMessage("You WIN!!!");
+        else
+            canvasView.showMessage("You LOSE");
+
         mainCircle.initRadius();
         initEnemyCircles();
         canvasView.reDraw();
