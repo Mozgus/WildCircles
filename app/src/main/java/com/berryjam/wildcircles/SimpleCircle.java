@@ -2,6 +2,7 @@ package com.berryjam.wildcircles;
 
 public class SimpleCircle {
 
+    public static final int HALO_FACTOR = 3;
     protected int x;
     protected int y;
     protected int radius;
@@ -34,7 +35,7 @@ public class SimpleCircle {
     }
 
     public SimpleCircle getCircleArea() {
-        return new SimpleCircle(x, y, radius * 3);
+        return new SimpleCircle(x, y, radius * HALO_FACTOR);
     }
 
     public boolean isIntersect(SimpleCircle circle) {
