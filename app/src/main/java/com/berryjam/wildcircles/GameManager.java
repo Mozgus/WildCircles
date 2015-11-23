@@ -95,6 +95,10 @@ public class GameManager {
         else
             canvasView.showMessage("You LOSE");
 
+        startGame();
+    }
+
+    private void startGame(){
         mainCircle.initRadius();
         initEnemyCircles();
         canvasView.reDraw();
